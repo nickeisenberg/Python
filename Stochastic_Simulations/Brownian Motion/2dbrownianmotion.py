@@ -1,4 +1,4 @@
-#Simulating a Brownain Motion in 2-d starting at 0
+#Simulating a Brownain Motion in 2-d starting at 0 
 
 import numpy as np
 import matplotlib.pyplot as plt
