@@ -39,7 +39,7 @@ def BrownianSheetWalsh(t, nt, x, nx):
     W_tx = np.zeros((nx + 1, nt + 1))
     for x in range(nx):
         for t in range(nt):
-            dW = np.random.normal(0, delta_t * delta_x, size=1)
+            dW = np.sqrt(delta_t * delta_x) * np.random.normal(0, 1, size=1)
             W_tx[x + 1, t + 1] = W_tx[x, t + 1] + W_tx[x + 1, t] - W_tx[x, t] + dW[0]
     return W_tx
 
@@ -137,7 +137,7 @@ def BM():
     plt.show(block=False)
     for i in range(50):
         plt.title('Standard Brownian motion', fontsize=20)
-        dW = np.random.normal(0, t / nt, size=nt)
+        dW = np.sqrt(t / nt) * np.random.normal(0, 1, size=nt)
         BM = np.zeros(nt+1)
         BM[1:nt+1] = np.cumsum(dW)
         plt.plot(t_axis, BM)

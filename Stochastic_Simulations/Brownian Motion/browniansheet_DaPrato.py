@@ -13,20 +13,20 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 t = 5
 x = math.pi
 nx = 100
-nt = 100
+nt = 1000
 delta_t = t / nt
 delta_x = x / nx
 
 # K will denote the upper limit of sumation from Example 4.9 DaPrato
 
-K = 25
+K = 100
 
 # Generate K + 1 Brownian Motions simulations.
 # Simulate nt + 1 points: W(t_0) = 0, W(t_1), ..., W(t_k), ..., W(t_n).
 
 W = np.zeros((nt + 1, K + 1), dtype=float)
 for i in range(K+1):
-    dW = np.sqrt(delta_t) * np.random.normal(0, 1, size=nt )
+    dW = np.sqrt(delta_t) * np.random.normal(0, 1 , size=nt )
     W[1:,i] = np.cumsum(dW)
 
 
