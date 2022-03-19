@@ -25,7 +25,7 @@ x_axis = np.linspace(0.0, x, nx + 1)
 W_tx = np.zeros((nx + 1, nt + 1))
 for x in range(nx):
     for t in range(nt):
-        dW = np.random.normal(0, delta_t * delta_x, size=1 )
+        dW = np.sqrt(delta_t * delta_x) * np.random.normal(0, 1, size=1 )
         W_tx[x + 1, t + 1] = W_tx[x, t + 1] + W_tx[x + 1, t] - W_tx[x, t] + dW[0]
 
 # print(W_tx)
