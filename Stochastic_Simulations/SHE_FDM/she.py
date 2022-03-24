@@ -12,7 +12,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 # Set the time and space intervals. Choose number of partitions of each.
 
 # Time
-t = .1
+t = .10038
 nt = 500
 delta_t = t / nt
 
@@ -26,7 +26,7 @@ t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
 # choose lambda
-lbd = 1
+lbd = 4
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
