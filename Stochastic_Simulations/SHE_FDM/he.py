@@ -10,12 +10,12 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 
 # Time
 t = .1
-nt = 100
+nt = 500
 delta_t = t / nt
 
 # Space
 x = 1
-nx = 20
+nx = 50
 delta_x = x / nx
 
 # create the time and spatial axis

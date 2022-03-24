@@ -51,8 +51,8 @@ def uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f):
     # Set up the finite difference scheme
     for j in range(nt):
         for i in range(1,nx):
-            u[i,j+1] = u[i,j] + ((nx) ** 2) * (delta_t / 4) * (u[i+1,j] + u[i-1,j] - 2 * u[i,j])\
-                        + lbd *  nx * u[i,j] * dW[i+1,j+1]
+            u[i,j+1] = max(u[i,j] + ((nx) ** 2) * (delta_t / 4) * (u[i+1,j] + u[i-1,j] - 2 * u[i,j])\
+                        + lbd *  nx * u[i,j] * dW[i+1,j+1], 0)
     return(u)
 
 # Set up the solution
@@ -64,26 +64,26 @@ ts, xs = np.meshgrid(t_axis, x_axis)
 # Plot the approximate solution along with the noise
 fig = plt.figure(figsize=(8,8))
 plt.title('A finite differnece method simulation of \n \
-$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {{}} u(t,x)\\dot{{W}}(t,x)$ \n \
+$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
 $u(x,0) = \\sin(\\pi x)$'.format(lbd))
 plt.axis('off')
 
 # Approximate solution
-ax = fig.add_subplot(121, projection='3d')
+ax = fig.add_subplot(111, projection='3d')
 # ax = Axes3D(fig, auto_add_to_figure=False)
 fig.add_axes(ax)
 ax.set_xlabel('Time', fontsize=14)
 ax.set_ylabel('Space', fontsize=14)
 ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='plasma')
-ax.set_title('$u(t,x)$',fontsize=20)
+#ax.set_title('$u(t,x)$',fontsize=20)
 
-# Noise
-ax1 = fig.add_subplot(122, projection='3d')
-# ax = Axes3D(fig, auto_add_to_figure=False)
-fig.add_axes(ax1)
-# ax1.set_xlabel('Time', fontsize=14)
-# ax1.set_ylabel('Space', fontsize=14)
-ax1.plot_surface(ts, xs, dW, rstride=1, cstride=1, cmap='plasma')
-ax1.set_title('Space time white noise',fontsize=20)
+# # Noise
+# ax1 = fig.add_subplot(122, projection='3d')
+# # ax = Axes3D(fig, auto_add_to_figure=False)
+# fig.add_axes(ax1)
+# # ax1.set_xlabel('Time', fontsize=14)
+# # ax1.set_ylabel('Space', fontsize=14)
+# ax1.plot_surface(ts, xs, dW, rstride=1, cstride=1, cmap='plasma')
+# ax1.set_title('Space time white noise',fontsize=20)
 
 plt.show()
