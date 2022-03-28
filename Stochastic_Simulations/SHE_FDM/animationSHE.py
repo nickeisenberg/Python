@@ -61,6 +61,10 @@ def ulbd(lbd):
     return(ulbd)
 
 # u = ulbd(lbd)
+NF = 10
+u = np.zeros((NF,nx+1, nt+1))
+for i in range(NF):
+    u[i,:,:] = ulbd(i/NF)
 
 # Set up grid
 ts, xs = np.meshgrid(t_axis, x_axis)
@@ -72,17 +76,18 @@ fig = plt.figure(figsize=(8,8))
 # $u(x,0) = \\sin(\\pi x)$'.format(lbd))
 plt.axis('off')
 
-plt.show(block=False)
+# Approximate solution
+ax = fig.add_subplot(111, projection='3d')
+fig.add_axes(ax)
+ax.set_xlabel('Time', fontsize=14)
+ax.set_ylabel('Space', fontsize=14)
 
-for i in range(9):
-    # Approximate solution
-    ax = fig.add_subplot(111, projection='3d')
-    fig.add_axes(ax)
-    ax.set_xlabel('Time', fontsize=14)
-    ax.set_ylabel('Space', fontsize=14)
-    ax.plot_surface(ts, xs, ulbd(i / 4), rstride=1, cstride=1, cmap='plasma')
-    plt.draw()
-    plt.pause(.1)
-    plt.clf()
+def animate(i):
+    ax.plot_surface(ts, xs, u[i,:,:], rstride=1, cstride=1, cmap='plasma')
 
-plt.show()
+#ax.plot_surface(ts, xs, u[4,:,:], rstride=1, cstride=1, cmap='plasma')
+
+anim = animation.FuncAnimation(fig, animate, frames=NF)
+anim.save('simulation.gif', writer='imagemagick', fps=10)
+
+#plt.show()
