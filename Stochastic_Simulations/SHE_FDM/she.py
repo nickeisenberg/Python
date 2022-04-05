@@ -1,8 +1,8 @@
 # A simulation of the 1-d SHE with vanishing boundary conditions
 # u_t - (1/2)u_{xx} = \lambda * u \dot{W}
-# k is a multipicative constant.
+# \lambda is a multipicative constant.
 # We consider the case of a linear multiplicative space-time white noise
-# We use the space-time white noise expansion given in EX 4.9 - DaPrato Red Book
+# We simulate the space-time white through a recursive scheme inspired by Walsh
 
 import numpy as np
 import matplotlib.pyplot as plt

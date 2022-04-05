@@ -64,7 +64,7 @@ def ulbd(lbd):
 NF = 10
 u = np.zeros((NF,nx+1, nt+1))
 for i in range(NF):
-    u[i,:,:] = ulbd(i/NF)
+    u[i,:,:] = ulbd(3*i/NF)
 
 # Set up grid
 ts, xs = np.meshgrid(t_axis, x_axis)
@@ -88,6 +88,6 @@ def animate(i):
 #ax.plot_surface(ts, xs, u[4,:,:], rstride=1, cstride=1, cmap='plasma')
 
 anim = animation.FuncAnimation(fig, animate, frames=NF)
-anim.save('simulation.gif', writer='imagemagick', fps=10)
+anim.save('simulation3.gif', writer='imagemagick', fps=10)
 
 #plt.show()
