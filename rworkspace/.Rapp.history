@@ -1,0 +1,1725 @@
+cm
+bm
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}
+cm
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=10#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}
+cm
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}
+bm
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }
+bm
+cm
+matrix(0,4,1)
+x<- matrix(0,4,1)
+append(x,2)
+x
+y<- append(x,2)
+y
+j<-numeric(1,2,3)
+j<-numeric(2,3)
+b<-matrix(1:6,2,3)
+b
+row(b)
+b
+b(1,)
+help(b)
+b[1,]
+x<-b[1,]
+y,_b[2,]
+y<-b[2,]
+w
+x
+y
+append(x,y)
+t(append(x,y))
+class(append(x,y))
+matrix(append(x,y),6,1)
+b<-matrix
+b
+b[1,1]=4
+class(b)
+m<- matrix(1:8,2,4)
+for(i in 1:(2){#
+ 	mi<-m[i,]#
+ }
+for(i in 1:2){#
+ 	mi<-m[i,]#
+ }
+m1
+m
+for(i in 1:(2){#
+ 	mi<-m[i,]#
+ 	print(mi)#
+ }
+x<-vector("1,2,4,3")
+x<-vector(1,2,4,3)
+x<- 1,3,2
+for(i in 1:3){#
+	ki=(i+1)#
+}
+k1
+for(i in 1:3){#
+	ki<-(i+1)#
+}
+k1
+for(i in 1:3){#
+	ki<-(i+1)#
+	print(ki)#
+}
+b<-matrix
+x<- 1:3
+append(b,x)
+b<- vector
+append(b,x)
+b
+b<- vector(x)
+b<-x
+b
+y
+append(b,y)
+for(i in 1:(j-1)){#
+	ki<-bm[i,]#
+	print(ki)#
+}
+m<- marix(1:4,2,2)
+m<- matrix(1:4,2,2)
+for(i in 1:(2)){#
+	ki<-m[i,]#
+	print(ki)#
+}
+k1
+for(i in 1:(2)){#
+	ki<-m[i,]#
+	print(append(k1,k2))#
+}
+help(assign)
+assign(x,1:3)
+help(paste)
+c(1:5)
+class(c(1:5))
+help(paste0)
+for (i in 1:length(v)) {#
+    assign(paste0('x', i), i)#
+}
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for Ax=b#
+ for(i in 1:(j-1)){#
+ 	assign(paste0('k',1),bm[i,])#
+ }
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for Ax=b#
+ for(i in 1:(j-1)){#
+ 	assign(paste0('k',i),bm[i,])#
+ }
+k1
+bm
+k1
+k2
+k3
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for Ax=b#
+ for(i in 1:(j-1)){#
+ 	assign(paste('k',i),bm[i,])#
+ }
+bm
+k1
+k2
+help(paste)
+assign('x',4)
+x
+class(k1)
+k1[1]
+k1[2]
+x<1:2
+x<-1:3
+y<-1:2
+z<-5
+append(x,y,z)
+append(append(x,y),z)
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for Ax=b#
+ for(i in 1:(j-1)){#
+ 	assign(paste0('k',1),bm[i,])#
+ }#
+ b<-k1
+b
+k1
+bm
+k1
+k2
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for Ax=b#
+ for(i in 1:(j-1)){#
+ 	assign(paste0('k',1),bm[i,])#
+ }
+bm
+k1
+k2
+k3
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }
+bm
+for(i in 1:(j-1)){#
+ 	assign(paste0('k',i),bm[i,])#
+ }
+k1
+k2
+b<- k1
+b
+for(i in 2:(j-1)){#
+ 	assign(paste0('b',i),ki)#
+ 	append(b,bi)#
+ }
+for(i in 2:(j-1)){#
+ 	assign(paste0('b',i),bm[i,])#
+ 	append(b,bi)#
+ }
+for(i in 2:(j-1)){#
+ 	append(b,bm[i,])#
+ }
+b
+bm
+k1
+k2
+b<-k1#
+ for(i in 2:(j-1)){#
+ 	append(b,bm[i,])#
+ }
+b
+append(b,bm[2,])
+help(do.call)
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }
+as.vector(t(bm))
+t(as.vector(t(bm)))
+x<- matix(1:9,3,3)
+x<- matrix(1:9,3,3)
+x
+xv<- as.vector(x)
+xv
+class(xv)
+matrix(xv,9,1)
+b<- matrix(as.vector(t(bm)),(j-1),1)
+b
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)
+b
+bm
+rm(list=ls())
+b
+b<- matrix(as.vector(t(bm)),(j-1),1)
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for Ax=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for Ax=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)
+b
+bm
+bm^(-1)
+cm
+b*(cm^-1)
+b*(cm^(-1))
+class(b)
+class(cm)
+cm^(-1)
+solve(cm,b)
+class(solve(cm,b))
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+for(i in 1:(j-1)^2){#
+	print('u(x_i)'=sol[i,1])#
+}
+sol
+print('u(x_1)')
+for(i in 1:(j-1)^2){#
+	assign(u(x_i),sol[i,1])#
+}
+for(i in 1:(j-1)^2){#
+	assign('u(x_i)'',sol[i,1])#
+}
+u(x_1)
+d
+print
+print(s)
+for(i in 1:(j-1)^2){#
+	assign('u(xi)',sol[i,1])#
+}
+u(x1)
+sol
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=10#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}
+sol
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=10#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}
+sol
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}
+sol
+p
+act<- matrix(0,(j-1),(j-1))#
+for(i in 1:(j-1)){#
+	for(k in 1:(j-1))#
+		act[i,k]=f(p*k,p*i)#
+}
+act<- matrix(0,(j-1),(j-1))#
+for(i in 1:(j-1)){#
+	for(k in 1:(j-1))#
+		act[i,k]=funb(p*k,p*i)#
+}
+act
+bm
+act
+b
+act
+sol
+act
+matrix(sol,4,4)
+matrix(1:6,3,2)
+t(matrix(sol,4,4))
+act
+actv <- as.vector(t(act))
+actv
+actv <- matrix(as.vector(t(act)),(j-1)^2,1)
+actv
+sol
+for(i in 1:(j-1)^2)){#
+	assign(paste0('e',i),abs(actv[i,1]-sol[i,1]))#
+}
+for(i in 1:(j-1)^2){#
+	assign(paste0('e',i),abs(actv[i,1]-sol[i,1]))#
+}
+e1
+errv<-matrix[0,(j-1)^2,1]#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=ei#
+}
+e1
+errv<-matrix[0,(j-1)^2,1]#
+#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=abs(actv[i,1]-sol[i,1])#
+}
+errv
+errv<-matrix[0,(j-1)^2,1]
+errv <- matrix(0,(j-1)^2,1)#
+#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=abs(actv[i,1]-sol[i,1])#
+}
+errv
+max(errv)
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}#
+#
+#find the error#
+act<- matrix(0,(j-1),(j-1))#
+for(i in 1:(j-1)){#
+	for(k in 1:(j-1))#
+		act[i,k]=funb(p*k,p*i)#
+}#
+actv <- matrix(as.vector(t(act)),(j-1)^2,1)#
+#
+errv <- matrix(0,(j-1)^2,1)#
+#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=abs(actv[i,1]-sol[i,1])#
+}#
+error <- max(errv)
+sol
+error
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=10#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}#
+#
+#find the error#
+act<- matrix(0,(j-1),(j-1))#
+for(i in 1:(j-1)){#
+	for(k in 1:(j-1))#
+		act[i,k]=funb(p*k,p*i)#
+}#
+actv <- matrix(as.vector(t(act)),(j-1)^2,1)#
+#
+errv <- matrix(0,(j-1)^2,1)#
+#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=abs(actv[i,1]-sol[i,1])#
+}#
+error <- max(errv)
+sol
+error
+read("pdetakehome2.R")
+source("pdetakehome2.R")
+readLines("pdetakehome2.R")
+help(open)
+open(pdetakehome2.R)
+workspace
+getwd()
+pde(j,funb,funs) <- function{#
+#
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}#
+#
+#find the error#
+act<- matrix(0,(j-1),(j-1))#
+for(i in 1:(j-1)){#
+	for(k in 1:(j-1))#
+		act[i,k]=funb(p*k,p*i)#
+}#
+actv <- matrix(as.vector(t(act)),(j-1)^2,1)#
+#
+errv <- matrix(0,(j-1)^2,1)#
+#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=abs(actv[i,1]-sol[i,1])#
+}#
+error <- max(errv)#
+#
+print(sol)#
+print(error)#
+}
+#boundary and source function #
+funb <- function(x,y){#
+	exp(x)*sin(y)#
+}#
+#
+funs <- function(x,y){#
+	0#
+}#
+#generating the coeficient matrix given j (number of particians of domain) value#
+#cm stands for coeficient matrix #
+#
+j=5#
+J=(j-1)^2#
+#
+cm1 <- matrix(0,J,J)#
+#
+for(i in 1:J){#
+	cm1[i,i]=2#
+}#
+#
+for(i in 1:J-1){#
+	cm1[i,i+1]=-1#
+}#
+#
+for(i in 1:(J-j+1)){#
+	cm1[i,i+j-1]=-1#
+}#
+#
+cm1t <- t(cm1)#
+#
+cm <- cm1+cm1t#
+#
+for(i in 1:(j-2)){#
+	cm[i*(j-1),i*(j-1)+1]=0#
+	cm[i*(j-1)+1,i*(j-1)]=0#
+}#
+#
+#generate the b vector for cm*x=b#
+#bm stands for b-matrix#
+#bv stands for v-vector#
+#
+p <- 1/j #
+#
+bm <- matrix(0,j-1,j-1)#
+#
+	#corners of bm #
+ bm[1,1]=(funb(p,0)+funb(0,p)-funs(p,p))#
+ bm[1,(j-1)]=(funb(p*(j-1),0)+funb(1,p)-funs((j-1)*p,p))#
+ bm[(j-1),1]=(funb(p,1)+funb(0,p*(j-1))-funs(p,(j-1)*p))#
+ bm[(j-1),(j-1)]=(funb(p*(j-1),1)+funb(1,p*(j-1))-funs((j-1)*p,(j-1)*p))#
+	 #top-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[1,i]=(funb(i*p,0)-funs(i*p,p))#
+ }#
+	 #bottom-middle of bm#
+ for(i in 2:(j-2)){#
+ 	bm[(j-1),i]=(funb(i*p,1)-funs(i*p,(j-1)*p))#
+ }#
+	#left-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,1]=(funb(0,i*p)-funs(p,i*p))#
+ }#
+#
+	#right-middle of bm#
+for(i in 2:(j-2)){#
+ 	bm[i,(j-1)]=(funb(1,i*p)-funs((j-1)*p,i*p))#
+ 	}#
+#
+	#center of bm#
+for(i in 2:(j-2)){#
+	for(k in 2:(j-2))#
+ 	bm[i,k]=(-funs(i*p,k*p))#
+ }#
+ # turning bm into a column vector b for cm*x=b#
+b<- matrix(as.vector(t(bm)),(j-1)^2,1)#
+#
+#find the solution of cm*x=b#
+sol<-solve(cm,b)#
+#
+for(i in 1:(j-1)^2){#
+}#
+#
+#find the error#
+act<- matrix(0,(j-1),(j-1))#
+for(i in 1:(j-1)){#
+	for(k in 1:(j-1))#
+		act[i,k]=funb(p*k,p*i)#
+}#
+actv <- matrix(as.vector(t(act)),(j-1)^2,1)#
+#
+errv <- matrix(0,(j-1)^2,1)#
+#
+for(i in 1:(j-1)^2){#
+	errv[i,1]=abs(actv[i,1]-sol[i,1])#
+}#
+error <- max(errv)
+sol
+errro
+error
+as.matrix(sol)
+help(as.matrix)
+as.matrix(sol,4,4)
+help(as.matrix)
+class(soll)
+class(sol)
+soln<- as.numeric(sol)
+as.matrix(soln,4,4)
+help(as.matrix)
+as.matrix(soln,nrow=4,ncol=4)
+sol
+solv<- as.vector(sol)
+solv
+as.matrix(solv,4,4)
+as.matrix(solv, nrow=4, ncol=4)
+help(as.matrix)
+d<- matrix(solv, nrow=4, ncol=4)
+d
+sol
+t(d)
+source("pde.R")
+source("pde.R")
+act
+solution
