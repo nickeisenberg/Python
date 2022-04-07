@@ -26,8 +26,8 @@ delta_x = x / nx
 t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
-# # choose lambda
-# lbd = 1
+# choose lambda
+lbd = 1
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
