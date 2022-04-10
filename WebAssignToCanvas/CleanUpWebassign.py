@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 
 # Enter the WebAssign and Canvas csv files
-dfWA = pd.read_csv('webassign.csv')
-dfC = pd.read_csv('canvas.csv')
+dfWA = pd.read_csv('webassignNAMELESS.csv')
+dfC = pd.read_csv('canvasNAMELESS.csv')
 #
 
 # Remove homework columns
@@ -23,7 +23,8 @@ for col in coldrop:
     dfWA = dfWA.drop([col], axis=1)
 #
 
-# Fix the Webassign column titles #
+# Fix the Webassign column titles
+# Remove the '#' from quizes and change the reviews to 'Test x Review'
 dfWA = dfWA.rename(columns = {dfWA.columns[0]:'Student'})
 assign = dfWA.loc[dfWA['Student'] == 'Assignment Name']
 
@@ -33,7 +34,12 @@ count = 0
 for x in assval:
     x = x.strip()
     title = x.split()[2:]
-    assval[count] = ''.join(title)
+# use .title() to turn REVIEW into Review
+    if 'REVIEW' in title:
+        title = ' '.join(title[2:]+['Review']).title()
+    else:
+        title = ' '.join(title)
+    assval[count] = title.replace('#', '')
     count = count + 1
 
 for i in range(len(assval)):
@@ -58,14 +64,13 @@ dfWA = dfWA.reset_index(drop=True)
 # Remove in inactive students
 # Lower case the names of all the studetns.
 # Do this because some there will be discrepencies from WA to Canvas
-
 WAstu = list(dfWA[dfWA.columns[0]][1:])
 lWAstu = list()
 for stu in WAstu:
     low = stu.lower()
     lWAstu.append(low)
 
-Cstu = list(dfC['Student'][1: len(dfC['Student'])-1])
+Cstu = list(dfC['Student'][1: len(dfC['Student'])])
 lCstu = list()
 for stu in Cstu:
     low = stu.lower()
@@ -119,6 +124,34 @@ for stu in Cstu:
         rowadd.insert(0, stu)
         dfWA = Insert_row(count+1 , dfWA, rowadd)
     count = count + 1
+#
+
+# Change the index values
+dfWA = dfWA.set_index('Student')
+
+# Fix capitoliztion of indexes
+indval = dfWA.index.values.tolist()
+count = 0
+for ind in indval:
+    indval[count] = ind.title()
+    count = count + 1
+
+dfWA.index = indval
+dfWA.index.name = 'Student'
+#
+
+# Group each column. Quizes ... Test Reviews...
+# Fix the 'Student' column
+colorder = [dfWA.columns.values.tolist()[0]]
+
+for name in dfWA.columns.values.tolist()[1:]:
+    if 'Quiz' in name:
+        colorder = colorder + [name]
+for name in dfWA.columns[1:]:
+    if 'Review' in name:
+        colorder = colorder + [name]
+
+dfWA = dfWA[colorder]
 #
 
 # Store dfWA to a csv file
