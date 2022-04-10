@@ -1,6 +1,14 @@
 import pandas as pd
 import numpy as np
 
+# This program will take the WebAssign csv and clean it up so that
+# it can easily be pushed to Canvas.
+# The clean WebAssign csv will be called 'webassignCLEAN.csv'
+# The program will compare the student list from canvas to Web assign and if
+# a student is on WA but not Canvas, then the row will be deleted. If a student
+# is on canvans but not web assign, then a row of zeros will be added.
+
+
 # Enter the WebAssign and Canvas csv files
 dfWA = pd.read_csv('webassignNAMELESS.csv')
 dfC = pd.read_csv('canvasNAMELESS.csv')
