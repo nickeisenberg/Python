@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 # create the time interval and partition 
-t = 5 
+t = 4 
 n = 500 
 
 # How many sample paths?
@@ -34,10 +34,10 @@ t_axis = np.linspace(0, t, n+1)
 
 fig, ax = plt.subplots()
 
-ax.set_xlim(0, 5.3)
-ax.set_ylim(-4, 4)
+ax.set_xlim(0, 4.3)
+ax.set_ylim(-2.5, 2.5)
 
-line, = ax.plot(0, 0)
+line, = ax.plot(0, 0, linewidth=1)
 
 def anim_func(i):
     x.append(t_axis[int(i * n / t)])
@@ -52,7 +52,7 @@ animation = FuncAnimation(fig, func = anim_func, \
 
 plt.show()
 
-animation.save('BrownianPathAnim.gif', writer='imagemagick', fps=60)
+#animation.save('BrownianPathAnim.gif', writer='imagemagick', fps=20)
 
 # Create an animation of the first sample path
 #t_axis = np.linspace(0, t, n+1)
