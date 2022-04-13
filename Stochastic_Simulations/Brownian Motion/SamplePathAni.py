@@ -2,11 +2,14 @@
 
 import numpy as np
 import matplotlib.pyplot as plt 
+from matplotlib import animation
 
 # create the time interval and partition 
-t = 1
-n = 1000
-delta_t = t / n
+t = 2.5 
+n = 200 
+
+# How many sample paths?
+path_amt = 2
 
 # Create a brownian sample path 
 def bsp(t, n):
@@ -15,11 +18,30 @@ def bsp(t, n):
     B[1:] = np.cumsum(dB)
     return(B)
 
-# Simulate "i" sample paths 
+# Simulate "path_amt" sample paths 
 def sample_paths(i, t ,n):
     BSP = np.zeros((i, n+1))
     for k in range(i):
-        BSP[i,:] = bsp(t, n) 
+        BSP[k,:] = bsp(t, n) 
     return(BSP)
 
+B_paths = sample_paths(path_amt, t, n)
 
+# Create an animation of the first sample path
+t_axis = np.linspace(0, t, n+1)
+
+t = []
+y = []
+
+for amt in range(path_amt):
+   for i in range(n+1):
+        t.append(t_axis[i])
+        y.append(B_paths[amt][i])
+
+        plt.xlim(0,3)
+        plt.ylim(-3,3)
+
+        plt.plot(t, y)
+        plt.pause(0.0000001)
+
+plt.show()
