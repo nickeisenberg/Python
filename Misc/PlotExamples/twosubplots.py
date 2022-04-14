@@ -2,8 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # First create some toy data:
-x = np.linspace(0, 2*np.pi, 400)
-y = np.sin(x**2)
+x1 = np.linspace(0, 2*np.pi, 400)
+y1 = np.sin(x1**2)
+
+x2 = np.linspace(0, 2*np.pi, 400)
+y2 = np.cos(x2**2)
+
 
 ## Create two subolots side by side
 #f, (ax1, ax2) = plt.subplots(2, sharey=True)
@@ -16,8 +20,14 @@ y = np.sin(x**2)
 fig = plt.figure()
 ax1 = fig.add_subplot(211)
 ax2 = fig.add_subplot(212)
-ax1.plot(x,y)
-ax2.scatter(x,y)
+ax1.plot(x1 ,y1)
+ax2.scatter(x2,y2)
+
+## Plotting multiple functions on the same graph.
+#fig = plt.figure()
+#ax1 = fig.add_subplot(111)
+#ax1.plot(x1 ,y1)
+#ax1.scatter(x2,y2)
 
 ## Good example illustrationg how to use fig.add_subplot()
 #fig = plt.figure()

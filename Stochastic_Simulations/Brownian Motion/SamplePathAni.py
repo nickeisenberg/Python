@@ -9,7 +9,7 @@ t = 4
 n = 500 
 
 # How many sample paths?
-path_amt = 2
+path_amt = 3
 
 # Create a brownian sample path 
 def bsp(t, n):
@@ -28,32 +28,81 @@ def sample_paths(i, t ,n):
 B_paths = sample_paths(path_amt, t, n)
 
 # Create the animation function for the sample path
-x = []
-y = []
+#x1 = []
+#y1 = []
+#t_axis = np.linspace(0, t, n+1)
+#
+#fig, ax = plt.subplots()
+#
+#ax.set_xlim(0, 4.3)
+#ax.set_ylim(-2.5, 2.5)
+#
+#line, = ax.plot(0, 0, linewidth=1)
+
+# Attempt to create two animations on the same plot
+x1 = []
+y1 = []
+
+x2 = []
+y2 = []
+
+x3 = []
+y3 = []
+
 t_axis = np.linspace(0, t, n+1)
 
 fig, ax = plt.subplots()
 
 ax.set_xlim(0, 4.3)
-ax.set_ylim(-2.5, 2.5)
+ax.set_ylim(-3, 3)
 
-line, = ax.plot(0, 0, linewidth=1)
+line1, = ax.plot(0, 0, linewidth=1)
+line2, = ax.plot(0, 0, linewidth=1)
+line3, = ax.plot(0, 0, linewidth=1)
 
 def anim_func(i):
-    x.append(t_axis[int(i * n / t)])
-    y.append(B_paths[0][int(i * n / t)])
+    x1.append(t_axis[int(i * n / t)])
+    y1.append(B_paths[0][int(i * n / t)])
+    
+    x2.append(t_axis[int(i * n / t)])
+    y2.append(B_paths[1][int(i * n / t)])
 
-    line.set_xdata(x)
-    line.set_ydata(y)
-    return line,
+    x3.append(t_axis[int(i * n / t)])
+    y3.append(B_paths[2][int(i * n / t)])
+
+    line1.set_xdata(x1)
+    line1.set_ydata(y1)
+    
+    line2.set_xdata(x2)
+    line2.set_ydata(y2)
+    
+    line3.set_xdata(x3)
+    line3.set_ydata(y3)
+    return line1, line2, line3
 
 animation = FuncAnimation(fig, func = anim_func, \
-                frames = np.linspace(0, t, n+1), interval = 3, repeat=False)
+                frames = np.linspace(0, t, n+1), interval = 5, repeat=False)
 
+plt.title('Sample Paths of Brownian Motion')
 plt.show()
+#########
+
+#def anim_func(i):
+#    x1.append(t_axis[int(i * n / t)])
+#    y1.append(B_paths[0][int(i * n / t)])
+#
+#    line.set_xdata(x1)
+#    line.set_ydata(y1)
+#    return line,
+#
+#animation = FuncAnimation(fig, func = anim_func, \
+#                frames = np.linspace(0, t, n+1), interval = 3, repeat=False)
+#
+#plt.show()
 
 #animation.save('BrownianPathAnim.gif', writer='imagemagick', fps=20)
 
+# Bad Way to do the animation
 # Create an animation of the first sample path
 #t_axis = np.linspace(0, t, n+1)
 #
