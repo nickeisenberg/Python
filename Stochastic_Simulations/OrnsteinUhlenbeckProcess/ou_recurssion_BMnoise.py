@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# We use recurssion from the Euler-Maruyama method to simulate the process.
 k=1
 m=5
 s=1

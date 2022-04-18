@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # A simulation of The Ornstein-Uhlenbeck Process, X_t
+# We use Theorem2.3.7 and Theroem 11.1.1 Introduction to Stochastic Integration - Kuo
 # X_t = J(t) + I(t) where J and I are defined below
 
 # Set the drift and diffusion the coefficeint.
@@ -15,7 +16,7 @@ x_a=0
 
 # set the interval (a,b) and choose the size of the partition
 a = 0
-b = 10
+b = 5
 n_L = 1000
 delta_L = np.round((b-a)/n_L ,decimals = 5)
 
