@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # We consider the time interval (0,t)
 # We partion the interval into 1000 pieces. P denotes the partition.
 
-t=16
+t=10
 n=1000
 delta_t = t/n
 
