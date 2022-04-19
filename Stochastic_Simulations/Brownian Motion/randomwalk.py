@@ -9,15 +9,25 @@ import matplotlib.pyplot as plt
 a = 0
 b = 5
 
+# state how many paths you want to plot
+pamt = 2
+
 # jump size is h and step size is del
-d = (b-a)/100
+d = (b-a)/70
 h = np.sqrt(d)
 
-x = np.arange(a,b+(d/2),d)
-dy = np.random.choice([-h, h], len(x)-1)
-y =np.append([0], np.cumsum(dy))
+# create array to store the paths
+x_axis = np.arange(a,b+(d/2),d)
+X = np.zeros((pamt, len(x_axis))) 
 
-plt.plot(x, y)
-plt.title('A random walk with jump size {} and step size {} \n number of steps = {}'.format(round(h,3), d, len(dy)))
+for i in range(pamt):
+    dy = np.random.choice([-h, h], len(x_axis)-1)
+    y =np.append([0], np.cumsum(dy))
+    X[i, : ] = y
+
+for i in range(pamt):
+    plt.plot(x_axis, X[i], marker='o')
+
+plt.title('{} sample paths of a random walk \n jump size = {} and step size = {} \n number of steps = {}'.format(pamt, round(h,3), d, len(dy)))
 plt.show()
 
