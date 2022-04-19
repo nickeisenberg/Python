@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # How many sample paths
-pamt = 3
+pamt = 5
 # We use recurssion from the Euler-Maruyama method to simulate the process.
 m = .001
 s= .01
@@ -48,7 +48,8 @@ for i in range(pamt):
     plt.plot(P_L,GB[i], linewidth=1)
 plt.title('Geometric Brownian Motion: \
 $dX_t = \sigma X_t dW_t + \mu X_t dt$ \n \
-$(a,b) =({},{})$, $X_a = {}$, $\sigma ={}$, and $\mu = {}$'\
-.format(a,b,x_a,s,m))
+$(a,b) =({},{})$, $X_a = {}$, $\sigma ={}$, and $\mu = {}$ \n \
+we subdivide the domian n = {} times'
+.format(a,b,x_a,s,m,n_L))
 plt.show()
 
