@@ -12,13 +12,13 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 # Set the time and space intervals. Choose number of partitions of each.
 
 # Time
-t = .10038
-nt = 500
+t = .001
+nt = 5000
 delta_t = t / nt
 
 # Space
-x = 1
-nx = 100
+x = 3
+nx = 200
 delta_x = x / nx
 
 # create the time and spatial axis
@@ -26,7 +26,7 @@ t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
 # choose lambda
-lbd = 1
+lbd = 0
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
@@ -38,11 +38,15 @@ for i in range(nx):
 
 # Set the initial condition
 # Insure that the vansihing boundary condition is met
-def f(x):
-        return np.round(np.sin(math.pi * x), 5)
+
+#def f(x):
+#        return np.round(np.sin(math.pi * x), 5)
+
+def f(arg):
+        return np.round((1 / np.sqrt(.0001)) * np.exp((-1) * (np.absolute(arg - (x / 2)) ** 2) / .0002), 5)
 
 def uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f):
-    # Set up a matrix defining u(t,x) = (u)_{i,j}
+    # Set up a matrix defining u(x,t) = (u)_{i,j}
     u = np.zeros((nx+1, nt+1), dtype=float)
 
     # Enter initial data
@@ -65,7 +69,7 @@ ts, xs = np.meshgrid(t_axis, x_axis)
 fig = plt.figure(figsize=(8,8))
 plt.title('A finite differnece method simulation of \n \
 $u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
-$u(x,0) = \\sin(\\pi x)$'.format(lbd))
+$u(x,0) = \\delta_0(x)$'.format(lbd))
 plt.axis('off')
 
 # Approximate solution
@@ -74,7 +78,25 @@ ax = fig.add_subplot(111, projection='3d')
 fig.add_axes(ax)
 ax.set_xlabel('Time', fontsize=14)
 ax.set_ylabel('Space', fontsize=14)
-ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='plasma')
+#fig.set_facecolor('xkcd:black')
+#ax.set_facecolor('xkcd:black')
+#ax.w_xaxis.line.set_color('white')
+#ax.w_yaxis.line.set_color('white')
+#ax.w_zaxis.line.set_color('white')
+#ax.w_zaxis.line.set_color('white')
+#ax.xaxis.label.set_color('white')
+#ax.yaxis.label.set_color('white')
+#ax.zaxis.label.set_color('white')
+#ax.tick_params(axis='x', colors='white')  
+#ax.tick_params(axis='y', colors='white') 
+#ax.tick_params(axis='z', colors='white')
+
+# See https://www.rapidtables.com/web/color/RGB_Color.html for color numbers
+ax.xaxis.set_pane_color((0, 0, 0, .6))
+ax.yaxis.set_pane_color((0, 0, 0, .6))
+ax.zaxis.set_pane_color((0, 0, 0, .6))
+
+ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='cool')
 #ax.set_title('$u(t,x)$',fontsize=20)
 
 # # Noise
