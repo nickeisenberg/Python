@@ -9,11 +9,14 @@ The scrip is not affected by upper or lower case letters. For example, if a stud
 Its important to note that this script is highly specific for my current semester of teaching with canvas and webassign. It will need to be tweaked for use in futer classes. For example, I dropped all the homework columns in webassign because homeowrk is not graded. If this is not the case then you will want to keep these columns. 
 
 Each section in the script starts with a comment and ends with a hash tag:
+
 \# Descritpion of what this section does 
+
 	code
 \#
 
 \# Description of next section
+
 	code
 \# 
 
