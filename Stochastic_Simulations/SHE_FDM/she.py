@@ -12,7 +12,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 # Set the time and space intervals. Choose number of partitions of each.
 
 # Time
-t = .001
+t = .20
 nt = 5000
 delta_t = t / nt
 

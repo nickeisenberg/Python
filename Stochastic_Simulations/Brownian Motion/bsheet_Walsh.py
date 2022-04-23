@@ -9,12 +9,12 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 
 # Time
 t = 5
-nt = 50
+nt = 1000
 delta_t = t / nt
 
 # Space
 x = 5
-nx = 50
+nx = 1000
 delta_x = x / nx
 
 # create the time and spatial axis
@@ -38,6 +38,9 @@ ax = fig.add_subplot(111, projection='3d')
 fig.add_axes(ax)
 # ax.set_xlabel('$ 0 \\leq t \\leq {} $'.format(t), fontsize=14)
 # ax.set_ylabel('$0 \\leq x \\leq \\pi$', fontsize=14)
+ax.xaxis.set_pane_color((0, 0, 0, .6))
+ax.yaxis.set_pane_color((0, 0, 0, .6))
+ax.zaxis.set_pane_color((0, 0, 0, .6))
 ax.plot_surface(ts, xs, W_tx, rstride=1, cstride=1, cmap='plasma')
 ax.set_title('Brownian Sheet',fontsize=20)
 plt.show()
