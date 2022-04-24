@@ -27,7 +27,7 @@ t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
 # choose lambda
-lbd = 1
+#lbd = 1
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
@@ -39,8 +39,12 @@ for i in range(nx):
 
 # Set the initial condition
 # Insure that the vansihing boundary condition is met
-def f(x):
-        return np.round(np.sin(math.pi * x), 5)
+
+#def f(x):
+#        return np.round(np.sin(math.pi * x), 5)
+
+def f(arg):
+        return np.round((1 / np.sqrt(.0001)) * np.exp((-1) * (np.absolute(arg - (x / 2)) ** 2) / .0002), 5)
 
 def ulbd(lbd):
     def uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f):
@@ -61,19 +65,19 @@ def ulbd(lbd):
     return(ulbd)
 
 # u = ulbd(lbd)
-NF = 10
+NF = 10 
 u = np.zeros((NF,nx+1, nt+1))
 for i in range(NF):
-    u[i,:,:] = ulbd(3*i/NF)
+    u[i,:,:] = ulbd(3 * ((i+1)/NF))
 
 # Set up grid
 ts, xs = np.meshgrid(t_axis, x_axis)
 
 # Plot the approximate solution
 fig = plt.figure(figsize=(8,8))
-# plt.title('A finite differnece method simulation of \n \
-# $u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
-# $u(x,0) = \\sin(\\pi x)$'.format(lbd))
+#plt.title('A finite differnece method simulation of \n \
+#$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
+#$u(x,0) = \\sin(\\pi x)$'.format(lbd))
 plt.axis('off')
 
 # Approximate solution
@@ -83,11 +87,17 @@ ax.set_xlabel('Time', fontsize=14)
 ax.set_ylabel('Space', fontsize=14)
 
 def animate(i):
-    ax.plot_surface(ts, xs, u[i,:,:], rstride=1, cstride=1, cmap='plasma')
+    ax.xaxis.set_pane_color((0, 0, 0, .6))
+    ax.yaxis.set_pane_color((0, 0, 0, .6))
+    ax.zaxis.set_pane_color((0, 0, 0, .6))
+    ax.title.set_text('A finite differnece method simulation of \n \
+$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
+$u(x,0) = \\delta_0 (x)$'.format(round(3 * ((i+1) / NF), 3)))
+    ax.plot_surface(ts, xs, u[i,:,:], rstride=1, cstride=1, cmap='cool')
 
 #ax.plot_surface(ts, xs, u[4,:,:], rstride=1, cstride=1, cmap='plasma')
 
 anim = animation.FuncAnimation(fig, animate, frames=NF)
-anim.save('simulation3.gif', writer='imagemagick', fps=10)
+anim.save('simulation3.gif', writer='imagemagick', fps=4)
 
 #plt.show()
