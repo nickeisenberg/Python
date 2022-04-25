@@ -10,8 +10,8 @@ import numpy as np
 
 
 # Enter the WebAssign and Canvas csv files
-dfWA = pd.read_csv('webassignNAMELESS.csv')
-dfC = pd.read_csv('canvasNAMELESS.csv')
+dfWA = pd.read_csv('webassigncurrent.csv')
+dfC = pd.read_csv('canvascurrent.csv')
 #
 
 # Remove homework columns
@@ -163,4 +163,4 @@ dfWA = dfWA[colorder]
 #
 
 # Store dfWA to a csv file
-dfWA.to_csv('webassignCLEAN.csv')
+dfWA.to_csv('webassigncurrentCLEAN.csv')
