@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # How many sample paths
-pamt = 5
+pamt = 3
 # We use recurssion from the Euler-Maruyama method to simulate the process.
 m = .001
 s= .01
