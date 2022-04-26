@@ -12,8 +12,8 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 
 t = 5
 x = math.pi
-nx = 100
-nt = 1000
+nx = 400
+nt = 400
 delta_t = t / nt
 delta_x = x / nx
 

@@ -8,13 +8,13 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 # Set the time and space intervals. Choose number of partitions of each.
 
 # Time
-t = 5
-nt = 1000
+t = 4
+nt = 500
 delta_t = t / nt
 
 # Space
-x = 5
-nx = 1000
+x = 4
+nx = 500
 delta_x = x / nx
 
 # create the time and spatial axis
