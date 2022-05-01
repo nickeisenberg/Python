@@ -26,7 +26,7 @@ t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
 # choose lambda
-lbd = 0
+lbd = 2.20
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
@@ -67,9 +67,13 @@ ts, xs = np.meshgrid(t_axis, x_axis)
 
 # Plot the approximate solution along with the noise
 fig = plt.figure(figsize=(8,8))
-plt.title('A finite differnece method simulation of \n \
-$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
-$u(x,0) = \\delta_0(x)$'.format(lbd))
+
+#plt.title('$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
+#$u(x,0) = \\delta_0(x)$'.format(lbd))
+
+#plt.title('A finite differnece method simulation of \n \
+#$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
+#$u(x,0) = \\delta_0(x)$'.format(lbd))
 plt.axis('off')
 
 # Approximate solution
@@ -77,7 +81,9 @@ ax = fig.add_subplot(111, projection='3d')
 # ax = Axes3D(fig, auto_add_to_figure=False)
 fig.add_axes(ax)
 ax.set_xlabel('Time', fontsize=14)
+ax.set_xticks([0, t / 2, t])
 ax.set_ylabel('Space', fontsize=14)
+ax.set_yticks([0, x / 2, x])
 #fig.set_facecolor('xkcd:black')
 #ax.set_facecolor('xkcd:black')
 #ax.w_xaxis.line.set_color('white')
