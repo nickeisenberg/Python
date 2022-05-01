@@ -23,8 +23,10 @@ n = 500
 x_axis = np.linspace(x0, xn, n + 1) 
 
 # specify b
-b = 1.45
+#b = 1.45
 
 # plot
-plt.plot(x_axis, Y_2b01(1, x_axis, b))
+for b in [1/8, 1/2, 3/4, 1, 1.2, 1.4]:
+    plt.plot(x_axis, Y_2b01(1, x_axis, b), label='b = {}'.format(b))
+plt.legend(loc="upper left")
 plt.show()
