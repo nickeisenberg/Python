@@ -1,1 +1,1 @@
-Some plots of the fundamental solutions the space time fractional partial differential equation.
+All things related the the space time fractional SPDE. 

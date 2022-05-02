@@ -102,7 +102,7 @@ ax.xaxis.set_pane_color((0, 0, 0, .6))
 ax.yaxis.set_pane_color((0, 0, 0, .6))
 ax.zaxis.set_pane_color((0, 0, 0, .6))
 
-ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='cool')
+ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='plasma')
 #ax.set_title('$u(t,x)$',fontsize=20)
 
 # # Noise
