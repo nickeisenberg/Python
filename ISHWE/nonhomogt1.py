@@ -47,7 +47,7 @@ for b in [.5, .8, 1, 1.4]:
     plt.legend(loc="upper left")
 
 
-for b in [1.9]:
+for b in [1.99]:
     # x axis
     x0 = 0
     xn = 4
