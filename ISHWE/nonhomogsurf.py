@@ -14,21 +14,6 @@ def Y(i):
         ((t ** ((b / 2) - 1)) / 2)
     return(val)
 
-## for b <= 1.5 
-#xn = 4
-#n = 500
-#x_axis = np.linspace(-1 * xn, xn, n+1)
-#
-#Yvalue = np.zeros(n + 1)
-#b = b
-#t = 1
-#ind = 0
-#for x in x_axis:
-#    x = x
-#    Yvalue[ind] = mp.nsum(Y, [0, 200])
-#    ind = ind + 1
-#
-
 # -----------------------
 # x axis
 x0 = 0
@@ -43,13 +28,13 @@ t = 1
 nt = 50
 t_axis = np.linspace(1, 4, nt + 1)
 
-b = .7
+b = 0.5
 Yt = np.zeros((nt + 1, 2 * n + 1))
 ind_t = 0
 # ------------------------
 
 # -----------------------
-## for b <= 1.5 
+# for b <= 1.5 
 for t in t_axis:
     ind_x = 0
     Yvalue_pos = np.zeros(n + 1)
