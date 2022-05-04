@@ -4,12 +4,12 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 
 # Time
 t = 5
-nt = 100
+nt = 200
 delta_t = t / nt
 
 # Space
 x = 5
-nx = 100
+nx = 200
 delta_x = x / nx
 
 # create the time and spatial axis
@@ -39,4 +39,5 @@ ax.zaxis.set_pane_color((0, 0, 0, .6))
 
 ax.plot_surface(ts, xs, dW, rstride=1, cstride=1, cmap='plasma')
 
+plt.title('Space-time white noise: $\\dot{W}(t,x) \\approx \\int_{t-\\delta t}^t \\int_{x - \\delta x}^x dW(t,x)$', fontsize=20)
 plt.show()

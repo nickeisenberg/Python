@@ -26,7 +26,7 @@ t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
 # choose lambda
-lbd = 2.20
+lbd = 2.15
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
@@ -43,7 +43,7 @@ for i in range(nx):
 #        return np.round(np.sin(math.pi * x), 5)
 
 def f(arg):
-        return np.round((1 / np.sqrt(.0001)) * np.exp((-1) * (np.absolute(arg - (x / 2)) ** 2) / .0002), 5)
+    return np.round((1 / np.sqrt(.0001)) * np.exp((-1) * (np.absolute(arg - (x / 2)) ** 2) / .0002), 5)
 
 def uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f):
     # Set up a matrix defining u(x,t) = (u)_{i,j}
@@ -71,9 +71,12 @@ fig = plt.figure(figsize=(8,8))
 #plt.title('$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
 #$u(x,0) = \\delta_0(x)$'.format(lbd))
 
-#plt.title('A finite differnece method simulation of \n \
-#$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
-#$u(x,0) = \\delta_0(x)$'.format(lbd))
+plt.title('$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = {} u(t,x)\\dot{{W}}(t,x)$ \n \
+$u(x,0) \\approx \\delta_0(x)$'.format(lbd), fontsize=20)
+
+#plt.title('$u_t(t,x) - \\dfrac{{1}}{{2}} u_{{xx}}(t,x) = 0$ \n \
+#$u(x,0) \\approx \\delta_0(x)$'.format(lbd), fontsize=20)
+
 plt.axis('off')
 
 # Approximate solution
@@ -102,7 +105,7 @@ ax.xaxis.set_pane_color((0, 0, 0, .6))
 ax.yaxis.set_pane_color((0, 0, 0, .6))
 ax.zaxis.set_pane_color((0, 0, 0, .6))
 
-ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='plasma')
+ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='cool')
 #ax.set_title('$u(t,x)$',fontsize=20)
 
 # # Noise

@@ -10,8 +10,8 @@ import numpy as np
 
 
 # Enter the WebAssign and Canvas csv files
-dfWA = pd.read_csv('oldwa.csv')
-dfC = pd.read_csv('oldcanvas.csv')
+dfWA = pd.read_csv('WAuncleanfinal.csv')
+dfC = pd.read_csv('Cuncleanfinal.csv')
 #
 
 # Remove homework columns
@@ -161,6 +161,24 @@ for name in dfWA.columns[1:]:
 
 dfWA = dfWA[colorder]
 #
+
+## Add a column for Test scores from canvas
+#
+#tests = []
+#for i in range(4):
+#    tests.append(' '.join(['Test', str(i+1), '(']))
+#
+#tests.append('Final (')
+#
+#for name in dfC.columns.values.tolist(): 
+#    for nm in tests:
+#        if name.startswith(nm) == True:
+#            addition = pd.DataFrame(dfC[name])
+#            newname = ' '.join(name.split()[:len(name.split())-1])
+#            addition = addition.rename(columns = {addition.columns[0]:newname})
+#            addition.index = dfWA.index.values
+#            dfWA = pd.concat([dfWA, addition], axis=1,)
+##
 
 # Store dfWA to a csv file
 dfWA.to_csv('clean.csv')
