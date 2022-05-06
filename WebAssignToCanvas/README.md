@@ -20,4 +20,4 @@ Each section in the script starts with a comment and ends with a hash tag:
 	code
 \# 
 
-
+The (full) file is the complete script. I need to make a NAMELESS Webassign and Canvass csv file to illustrate it. The (full) file will complete all the class statistics needed. 
