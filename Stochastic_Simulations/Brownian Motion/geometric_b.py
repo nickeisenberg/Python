@@ -47,9 +47,7 @@ for i in range(pamt):
 for i in range(pamt):
     plt.plot(P_L,GB[i], linewidth=1)
 plt.title('Geometric Brownian Motion: \
-$dX_t = \sigma X_t dW_t + \mu X_t dt$ \n \
-$(a,b) =({},{})$, $X_a = {}$, $\sigma ={}$, and $\mu = {}$ \n \
-we subdivide the domian n = {} times'
-.format(a,b,x_a,s,m,n_L))
+$dS_t = \sigma S_t dB_t + \mu S_t dt$ \n \n \
+$(a,b) =({},{})$, $X_a = {}$, $\sigma ={}$, and $\mu = {}$'.format(a,b,x_a,s,m,n_L))
 plt.show()
 

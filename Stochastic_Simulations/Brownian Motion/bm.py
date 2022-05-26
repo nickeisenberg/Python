@@ -11,7 +11,7 @@ n=1000
 delta_t = t/n
 
 # how many paths
-pamt = 2
+pamt = 100
 
 # create an array to store the paths
 X = np.zeros((pamt, n+1))

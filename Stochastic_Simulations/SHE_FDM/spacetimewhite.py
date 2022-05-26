@@ -39,5 +39,5 @@ ax.zaxis.set_pane_color((0, 0, 0, .6))
 
 ax.plot_surface(ts, xs, dW, rstride=1, cstride=1, cmap='plasma')
 
-plt.title('Space-time white noise: $\\dot{W}(t,x) \\approx \\int_{t-\\delta t}^t \\int_{x - \\delta x}^x dW(t,x)$', fontsize=20)
+plt.title('Space-time white noise: $\\dot{W}(t,x) \\approx \\int_{t-\\delta t}^t \\int_{x - \\delta x}^x dW(s,y)$', fontsize=20)
 plt.show()
