@@ -12,7 +12,7 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D
 # Set the time and space intervals. Choose number of partitions of each.
 
 # Time
-t = .20
+t = .2
 nt = 5000
 delta_t = t / nt
 
@@ -26,11 +26,12 @@ t_axis = np.linspace(0.0, t, nt + 1)
 x_axis = np.linspace(0.0, x, nx + 1)
 
 # choose lambda
-lbd = 1
+lbd = 0
 
 # Set up space time white noise
 dW = np.zeros((nx+1, nt+1))
 
+np.random.seed(3)
 for i in range(nx):
     for j in range(nt):
         dWij = np.sqrt(delta_t)*np.sqrt(delta_x) * np.random.normal(0, 1, size=1 )
@@ -42,25 +43,50 @@ for i in range(nx):
 #def f(x):
 #        return np.round(np.sin(math.pi * x), 5)
 
-def f(arg):
+def delta(arg):
     return np.round((1 / np.sqrt(.0001)) * np.exp((-1) * (np.absolute(arg - (x / 2)) ** 2) / .0002), 5)
+
+####### bumpy arches
+bumpyarch = np.zeros(nx + 1)
+count = 0
+for xi in x_axis:
+    bumpyarch[count] =  max((np.sin((4*math.pi / 3) * (xi - (3 / 8)  ))+1) + (3*np.sqrt(delta_x) * np.random.normal(0,1,size=1)), 0)
+    count = count + 1
+
 
 def uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f):
     # Set up a matrix defining u(x,t) = (u)_{i,j}
     u = np.zeros((nx+1, nt+1), dtype=float)
 
     # Enter initial data
-    u[0:,0] = f(x_axis)
+    u[0:,0] = f
 
-    # Set up the finite difference scheme
+    # Set up the finite difference scheme. 
+    # delta_t/4 should just be delta_t but the /4 helps with convergence.
     for j in range(nt):
         for i in range(1,nx):
-            u[i,j+1] = max(u[i,j] + ((nx) ** 2) * (delta_t / 4) * (u[i+1,j] + u[i-1,j] - 2 * u[i,j])\
+            u[i,j+1] = max(u[i,j] + ((nx) ** 2) * (delta_t /4) * (u[i+1,j] + u[i-1,j] - 2 * u[i,j])\
                         + lbd *  nx * u[i,j] * dW[i+1,j+1], 0)
     return(u)
+#######
+
+#def uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f):
+#    # Set up a matrix defining u(x,t) = (u)_{i,j}
+#    u = np.zeros((nx+1, nt+1), dtype=float)
+#
+#    # Enter initial data
+#    u[0:,0] = f(x_axis)
+#
+#    # Set up the finite difference scheme. 
+#    # delta_t/4 should just be delta_t but the /4 helps with convergence.
+#    for j in range(nt):
+#        for i in range(1,nx):
+#            u[i,j+1] = max(u[i,j] + ((nx) ** 2) * (delta_t /4) * (u[i+1,j] + u[i-1,j] - 2 * u[i,j])\
+#                        + lbd *  nx * u[i,j] * dW[i+1,j+1], 0)
+#    return(u)
 
 # Set up the solution
-u = uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, f)
+u = uheat(t, nt, delta_t, x, nx, delta_x, lbd, dW, bumpyarch)
 
 # Set up grid
 ts, xs = np.meshgrid(t_axis, x_axis)
@@ -101,11 +127,11 @@ ax.set_yticks([0, x / 2, x])
 #ax.tick_params(axis='z', colors='white')
 
 # See https://www.rapidtables.com/web/color/RGB_Color.html for color numbers
-ax.xaxis.set_pane_color((0, 0, 0, .6))
-ax.yaxis.set_pane_color((0, 0, 0, .6))
-ax.zaxis.set_pane_color((0, 0, 0, .6))
+ax.xaxis.set_pane_color((0, 0, 0, 0))
+ax.yaxis.set_pane_color((0, 0, 0, 0))
+ax.zaxis.set_pane_color((0, 0, 0, 0))
 
-ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='cool')
+ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='viridis')
 #ax.set_title('$u(t,x)$',fontsize=20)
 
 # # Noise
