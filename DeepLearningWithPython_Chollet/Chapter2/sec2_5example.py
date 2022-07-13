@@ -1,7 +1,7 @@
 # section 2.5.1 example 
 
-import tensorflow as tf 
-import math 
+import tensorflow as tf
+import math
 from tensorflow.keras.datasets import mnist
 import numpy as np
 
@@ -9,7 +9,7 @@ class NaiveDense:
     def __init__(self, input_size, output_size, activation):
         self.activation = activation
 
-        w_shape = (input_size, output_size) 
+        w_shape = (input_size, output_size)
         w_initial_value = tf.random.uniform(w_shape, minval=0, maxval=1e-1)
         self.W = tf.Variable(w_initial_value)
 
@@ -49,7 +49,7 @@ assert len(model.weights) == 4
 
 class BatchGenerator:
     def __init__(self, images, labels, batch_size=128):
-        assert len(images) == len(labels) 
+        assert len(images) == len(labels)
         self.index = 0
         self.images = images
         self.labels = labels

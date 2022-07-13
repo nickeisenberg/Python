@@ -13,7 +13,7 @@ class Stats:
         for i in self.nums:
             total += i
             count += 1
-        mean = total / count 
+        mean = total / count
         return mean
 
     def max(self):
@@ -21,7 +21,7 @@ class Stats:
         for i in self.nums:
             if i >= guess:
                 guess = i
-        return guess 
+        return guess
 
     def min(self):
         guess = self.nums[0]
